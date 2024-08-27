@@ -1,0 +1,5 @@
+<h2>student detail</h2>
+
+<ng-container *ngIf="student$ | async as student">
+  <div>{{ student.name }}</div>
+</ng-container>

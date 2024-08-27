@@ -1,0 +1,90 @@
+<div>
+  <h2>Tao moi nhan vien</h2>
+
+  <form [formGroup]="createEmployeeForm">
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Nhap ten vao" />
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" />
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" />
+      <mat-hint
+        style="color: red"
+        *ngIf="
+          createEmployeeForm.get('phone')?.invalid &&
+          createEmployeeForm.get('phone')?.touched
+        "
+      >
+        <span *ngIf="createEmployeeForm.get('phone')?.errors?.['required']"
+          >Số điện thoại là bắt buộc.</span
+        >
+        <br />
+        <span *ngIf="createEmployeeForm.get('phone')?.errors?.['invalidPhone']">
+          Số điện thoại không hợp lệ. Số điện thoại phải gồm 10 chữ số và bắt
+          đầu bằng 03, 05, 07, hoặc 09.
+        </span>
+      </mat-hint>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Salary</mat-label>
+      <input type="number" step="1000000" matInput formControlName="salary" />
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field>
+      <mat-label>Birthdate</mat-label>
+      <input
+        matInput
+        [matDatepicker]="birthdatePicker"
+        formControlName="birthdate"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="birthdatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #birthdatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field>
+      <mat-label>Joindate</mat-label>
+      <input
+        matInput
+        [matDatepicker]="joindatePicker"
+        formControlName="joindate"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="joindatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #joindatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <br />
+    <button mat-raised-button (click)="createEmployee()">Create</button>
+  </form>
+</div>

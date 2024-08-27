@@ -1,5 +1,53 @@
-<img
-  src="https://firebasestorage.googleapis.com/v0/b/gym-management-4b690.appspot.com/o/uploads%2Flogo.jpg?alt=media"
-  alt=""
-  style="width: 700px"
-/>
+User component
+<br />
+
+<input type="text" value="email" />
+<br />
+<!-- Binding data bang dau [] -->
+<input type="text" [value]="email" />
+<br />
+<!-- Binding data bang dau [] -->
+<input type="text" [(ngModel)]="student.name" />
+
+<!-- Event Binding -->
+<button (click)="logEmailValue()">Show email</button>
+<br />
+
+<button (click)="toggleColor()">Color Toggle</button>
+
+@if (isBlue) {
+<div [class]="[isBlue ? 'text-blue' : 'text-red']">
+  {{ email }}
+</div>
+} @else {
+<div [class]="[isBlue ? 'text-blue' : 'text-red']">Vo Tan Tai</div>
+}
+
+<!-- Directive -->
+<!-- if, else, for -->
+
+@for (student of students; track $index) {
+
+<div>
+  {{ $index + 1 }} - {{ student.name }} -
+  {{ student.address || "Khong co Dia Chi" }}
+</div>
+}
+
+<button (click)="addStudentToArray()">Add Student</button>
+
+<br />
+<!-- ngif ngfor -->
+<ng-container *ngIf="students.length > 0; else noStudent">
+  danh sach student
+</ng-container>
+<ng-template #noStudent> khong co student nào </ng-template>
+
+<br />
+<ng-container *ngFor="let student of students; index as i">
+  <div>{{ i + 1 }}</div>
+  <div>{{ student.name }}</div>
+  <div [class]="student.address ? 'text-blue' : 'text-red'">
+    {{ student.address || "Khong co dia chi cu the" }}
+  </div>
+</ng-container>

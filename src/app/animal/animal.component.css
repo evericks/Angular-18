@@ -1,0 +1,17 @@
+.text-red {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+.text-orange {
+    color: orange;
+}
+.text-yellow {
+    color: yellow;
+}
+.text-green {
+    color: green;
+}
+.text-gray {
+    color: gray;
+}
